@@ -1,0 +1,18 @@
+[ui]
+username = Ryan Arana <ryana@darkhorse.com>
+#username = Ryan Arana <ryan.arana@gmail.com>
+
+[diff]
+git = 1
+
+[extensions]
+hgext.color = 
+rebase = 
+reviewboard = /usr/local/src/mercurial-reviewboard
+mq =
+
+[reviewboard]
+server = http://rb.darkhorse.com/
+target_groups = devs
+launch_webbrowser = true
+
