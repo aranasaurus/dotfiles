@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/ryana/src/hobocamp/puppet/modules/apache2'
+let g:netrw_dirhist_2='/Users/ryana/src/hobocamp/puppet/modules/apache2/manifests'
+let g:netrw_dirhist_3='/Users/ryana/.dotfiles/.vim/src/mustache.vim'
+let g:netrw_dirhist_4='/Users/ryana/.dotfiles/.vim/src/mustache.vim/ftdetect'
