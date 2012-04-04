@@ -2,8 +2,8 @@
 set nocompatible 
 set viminfo="~/.vim/.viminfo"
 
-" Adds all dirs in the given dir to runtimepath
-call pathogen#infect("~/.vim/bundles")
+" Adds all dirs in the ~/.vim/bundle
+call pathogen#infect()
 
 " Auto source .vimrc when it changes
 autocmd BufWritePost ~/.vimrc so %
