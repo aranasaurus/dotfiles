@@ -4,9 +4,21 @@ set viminfo="~/.vim/.viminfo"
 
 " Adds all dirs in the ~/.vim/bundle
 call pathogen#infect()
+call pathogen#helptags()
 
 " Auto source .vimrc when it changes
-autocmd BufWritePost ~/.vimrc so %
+au! BufWritePost .vimrc so %
+
+filetype on
+filetype plugin on
+filetype indent on
+syntax enable
+
+" Colors
+set t_Co=256
+"let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
 
 set hidden                      " hide buffers rather than close them
 set nowrap                      " don't wrap lines
@@ -19,8 +31,6 @@ set incsearch                   " show matches as you type
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set scrolloff=4                 " keep 4 lines off the edges of the screen when scrolling
 set mouse=a                     " enable mouse if it's available
-
-" tab/indent related stuff
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -40,17 +50,7 @@ set showcmd		                " display incomplete commands
 set nobackup                    " I can :w thanks
 set noswapfile                  " don't litter
 set clipboard=unnamed           " Enable pasting from the system clipboard
-
-" UI stuff
 set guioptions-=T
-
-filetype on
-filetype plugin on
-filetype indent on
-
-set t_Co=256
-colorscheme mustang
-syntax on
 
 " Key mapping stuff
 let mapleader=","
