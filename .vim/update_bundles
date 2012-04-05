@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# Author: Tammer Saleh
+# See http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen
 
 git_bundles = [
 	"git://github.com/othree/html5-syntax.vim.git",
