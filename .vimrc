@@ -19,6 +19,8 @@ set t_Co=256
 "let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
+" toggles between dark and light solarized
+call togglebg#map("<F5>")
 
 set hidden                      " hide buffers rather than close them
 set nowrap                      " don't wrap lines
