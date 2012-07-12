@@ -96,6 +96,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['puppet', 'html'] }
 
 let g:user_zen_expandabbr_key = "<c-e>"
 let g:use_zen_complete_tag=1
