@@ -1,6 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/ryana/src/hobocamp/puppet/modules/apache2'
-let g:netrw_dirhist_2='/Users/ryana/src/hobocamp/puppet/modules/apache2/manifests'
-let g:netrw_dirhist_3='/Users/ryana/.dotfiles/.vim/src/mustache.vim'
-let g:netrw_dirhist_4='/Users/ryana/.dotfiles/.vim/src/mustache.vim/ftdetect'
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/ryana/.oh-my-zsh/lib'
+let g:netrw_dirhist_2='/Users/ryana/.oh-my-zsh/custom/example'
+let g:netrw_dirhist_3='/Users/ryana/.oh-my-zsh'
+let g:netrw_dirhist_4='/Users/ryana/.oh-my-zsh/plugins/mercurial'
+let g:netrw_dirhist_5='/Users/ryana/.oh-my-zsh/plugins'
+let g:netrw_dirhist_6='/Users/ryana/.oh-my-zsh'
+let g:netrw_dirhist_7='/Users/ryana'
+let g:netrw_dirhist_8='/Users/ryana/.oh-my-zsh'
+let g:netrw_dirhist_9='/Users/ryana/.oh-my-zsh/custom'

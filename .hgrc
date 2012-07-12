@@ -1,6 +1,7 @@
 [ui]
 username = Ryan Arana <ryana@darkhorse.com>
 #username = Ryan Arana <ryan.arana@gmail.com>
+ignore = ~/.hgignore
 
 [diff]
 git = 1
@@ -14,5 +15,5 @@ mq =
 [reviewboard]
 server = http://rb.darkhorse.com/
 target_groups = devs
-launch_webbrowser = true
+#launch_webbrowser = true
 
