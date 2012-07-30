@@ -22,5 +22,6 @@
     added = yellow
     changed = green
     untracked = cyan
+
 [core]
-	excludesfile = /Users/ryana/.gitignore_global
+    excludesfile = /Users/ryana/.gitignore_global
