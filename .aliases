@@ -22,3 +22,5 @@ alias ar="sudo service apache2 restart"
 alias pgstart="pg_ctl -D /usr/local/var/postgres start"
 alias pgstop="pg_ctl -D /usr/local/var/postgres stop"
 
+alias dh_symbolicate="atos -arch armv7 -o 'DarkHorseComics.app/DarkHorseComics'"
+
