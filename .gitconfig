@@ -25,3 +25,4 @@
 
 [core]
     excludesfile = /Users/ryana/.gitignore_global
+    editor = /usr/bin/vim
