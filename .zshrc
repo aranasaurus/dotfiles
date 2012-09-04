@@ -46,5 +46,6 @@ export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/r20.0.1
 
 if [ -f `brew --prefix`/etc/autojump ]; then
     . `brew --prefix`/etc/autojump
+    export AUTOJUMP_KEEP_SYMLINKS=1
 fi
 
