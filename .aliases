@@ -1,6 +1,7 @@
+# Environment
 alias cds="cd ~/src"
 alias cdd="cd /var/www/dungeon/live/src/dungeon"
-alias dung="cdd && . ../../bin/activate"
+alias ipython="nocorrect ipython"
 
 # Source control
 alias gs="git status"
@@ -22,6 +23,13 @@ alias ar="sudo service apache2 restart"
 alias pgstart="pg_ctl -D /usr/local/var/postgres start"
 alias pgstop="pg_ctl -D /usr/local/var/postgres stop"
 
+# Dark Horse
+# DH - iOS
 alias dh_symbolicate="atos -arch armv7 -o 'DarkHorseComics.app/DarkHorseComics'"
-alias ipython="nocorrect ipython"
+
+# DH - Dungeon
+alias dung="cdd && . ../../bin/activate"
+
+# DH - Android
+alias dh_uninstall="adb uninstall com.darkhorse.digital"
 
