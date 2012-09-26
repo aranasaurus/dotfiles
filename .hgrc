@@ -7,8 +7,9 @@ ignore = ~/.hgignore
 git = 1
 
 [extensions]
-hgext.color = 
-rebase = 
+hgext.color =
+hgext.graphlog =
+rebase =
 reviewboard = /usr/local/src/mercurial-reviewboard
 mq =
 

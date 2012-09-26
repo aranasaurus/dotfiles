@@ -29,7 +29,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git mercurial osx python nyan brew compleat fabric pip vagrant encode64 autojump)
+plugins=(git mercurial osx python nyan brew compleat fabric pip vagrant encode64 autojump fabric)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.aliases
@@ -40,7 +40,7 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
 source /usr/local/share/python/virtualenvwrapper.sh
 
 # Customize to your needs...
-export PATH=/usr/local/Cellar/ruby/1.9.3-p194/bin:/usr/local/share/python:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/go/bin:/Users/ryana/.rvm/bin
+export PATH=/usr/local/Cellar/ruby/1.9.3-p194/bin:/usr/local/share/python:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/go/bin:/Users/ryana/.rvm/bin:/usr/games/bin
 export NODE_PATH=/usr/local/lib/node_modules
 export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/r20.0.1
 
