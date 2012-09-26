@@ -40,3 +40,6 @@ Thumbs.db
 *.swap
 *.tmp
 
+# IDE Related #
+###############
+.idea/workspace.xml
