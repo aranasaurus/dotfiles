@@ -40,7 +40,7 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
 source /usr/local/share/python/virtualenvwrapper.sh
 
 # Customize to your needs...
-export PATH=/usr/local/Cellar/ruby/1.9.3-p194/bin:/usr/local/share/python:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/go/bin:/Users/ryana/.rvm/bin:/usr/games/bin
+export PATH=/usr/local/Cellar/ruby/1.9.3-p194/bin:/usr/local/share/python:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/go/bin:/Users/ryana/.rvm/bin:/usr/games/bin
 export NODE_PATH=/usr/local/lib/node_modules
 export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/r20.0.1
 

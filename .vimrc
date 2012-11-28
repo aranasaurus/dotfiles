@@ -1,5 +1,5 @@
 " This must be first, because it changes other options as a side effect
-set nocompatible 
+set nocompatible
 set viminfo="~/.vim/.viminfo"
 
 " Adds all dirs in the ~/.vim/bundle
@@ -14,9 +14,11 @@ filetype plugin on
 filetype indent on
 syntax enable
 
+" Enable extended % matching
+runtime macros/matchit.vim
+
 " Colors
 set t_Co=256
-"let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
 " toggles between dark and light solarized
@@ -55,9 +57,13 @@ set nobackup                    " I can :w thanks
 set noswapfile                  " don't litter
 set clipboard=unnamed           " Enable pasting from the system clipboard
 set guioptions-=T
+set wildmenu                    " Better :command completion
+set shortmess=atI               " Nueter the 'Press Enter to continue' messages. see :help shortmess
 
 " Key mapping stuff
 let mapleader=","
+nnoremap ' `
+nnoremap ` '
 
 " Don't make me use shift
 nnoremap ; :
@@ -65,6 +71,10 @@ nnoremap ; :
 " Fix line wrapping messing up j/k keys
 nnoremap j gj
 nnoremap k gk
+
+" Strip trailing whitespace (the mW/`W stuff is to preserve cursor position...
+" there's probably a better way to do this)
+nnoremap <leader><space> mW:%s/\s\+$//e<CR>`W
 
 " NERDTree Stuff
 nmap <leader>n :NERDTreeClose<CR>:NERDTreeToggle<CR>
@@ -88,15 +98,15 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
-let g:Powerline_symbols='fancy'
-set laststatus=2
-
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['puppet', 'html'] }
+
+let g:Powerline_symbols='fancy'
+set laststatus=2
 
 let g:user_zen_expandabbr_key = "<c-e>"
 let g:use_zen_complete_tag=1
@@ -118,19 +128,19 @@ function! DoWindowSwap()
 	"Switch to dest and shuffle source->dest
 	exe curNum . "wincmd w"
 	"Hide and open so that we aren't prompted and keep history
-	exe 'hide buf' markedBuf 
+	exe 'hide buf' markedBuf
 endfunction
 
 nmap <silent> <leader>wm :call MarkWindowSwap()<CR>
 nmap <silent> <leader>wx :call DoWindowSwap()<CR>
 
-function! WinMove(key) 
+function! WinMove(key)
 	let t:curwin = winnr()
 	exec "wincmd ".a:key
 	if (t:curwin == winnr()) "we havent moved
 		if (match(a:key,'[jk]')) "were we going up/down
 			wincmd v
-		else 
+		else
 			wincmd s
 		endif
 		exec "wincmd ".a:key

@@ -12,6 +12,7 @@ hgext.graphlog =
 rebase =
 reviewboard = /usr/local/src/mercurial-reviewboard
 mq =
+hgk =
 
 [reviewboard]
 server = http://rb.darkhorse.com/
