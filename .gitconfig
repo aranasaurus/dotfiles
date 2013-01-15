@@ -28,3 +28,5 @@
     editor = /usr/bin/vim
 [credential]
 	helper = osxkeychain
+[push]
+	default = simple
