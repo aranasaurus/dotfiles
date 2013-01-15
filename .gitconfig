@@ -26,3 +26,5 @@
 [core]
     excludesfile = ~/.gitignore_global
     editor = /usr/bin/vim
+[credential]
+	helper = osxkeychain
