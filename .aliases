@@ -1,35 +1,9 @@
 # Environment
 alias cds="cd ~/src"
-alias cdd="cd /var/www/dungeon/live/src/dungeon"
 alias ipython="nocorrect ipython"
 
 # Source control
 alias gs="git status"
 alias mkphg="hg diff > ~/src/patch.diff" # Make patch from hg diff
 alias ap="patch -p1 < ~/src/patch.diff"  # Apply patch
-
-# Vagrant
-alias vu="cd ~/src/hobocamp/dungeon && vagrant up"
-alias vs="cd ~/src/hobocamp/dungeon && vagrant ssh"
-alias vr="cd ~/src/hobocamp/dungeon && vagrant reload"
-alias vh="cd ~/src/hobocamp/dungeon && vagrant halt"
-alias vd="cd ~/src/hobocamp/dungeon && vagrant destroy"
-alias vus="vu && vs"
-alias vrs="vr && vs"
-alias vds="vd && vus"
-
-# Services
-alias ar="sudo service apache2 restart"
-alias pgstart="pg_ctl -D /usr/local/var/postgres start"
-alias pgstop="pg_ctl -D /usr/local/var/postgres stop"
-
-# Dark Horse
-# DH - iOS
-alias dh_symbolicate="atos -arch armv7 -o 'DarkHorseComics.app/DarkHorseComics'"
-
-# DH - Dungeon
-alias dung="cdd && . ../../bin/activate"
-
-# DH - Android
-alias dh_uninstall="adb uninstall com.darkhorse.digital"
 
