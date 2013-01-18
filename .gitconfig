@@ -2,6 +2,18 @@
     name = Ryan Arana
     email = ryan.arana@gmail.com
 
+[alias]
+    ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
+    in = !git fetch && git log master..FETCH_HEAD
+    lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset%s %C(blue)%an%Creset %Cgreen(%cr)' --abbrev-commit --date=relative
+    out = !git fetch && git log FETCH_HEAD..master
+    pr = pull -r
+    revert = checkout
+    rollback = reset --soft HEAD~1
+    st = status
+    stat = status
+    this = !git init && git add . && git commit -m \"initial commit\"
+
 [color]
     branch = auto
     diff = auto
@@ -30,15 +42,6 @@
     helper = osxkeychain
 [push]
     default = simple
+[branch]
+    autosetuprebase = always
 
-[alias]
-    ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
-    in = !git fetch && git log master..FETCH_HEAD
-    lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset%s %C(blue)%an%Creset %Cgreen(%cr)' --abbrev-commit --date=relative
-    out = !git fetch && git log FETCH_HEAD..master
-    pr = pull -r
-    revert = checkout
-    rollback = reset --soft HEAD~1
-    st = status
-    stat = status
-    this = !git init && git add . && git commit -m \"initial commit\"
