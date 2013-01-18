@@ -27,6 +27,18 @@
     excludesfile = ~/.gitignore_global
     editor = /usr/bin/vim
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 [push]
-	default = simple
+    default = simple
+
+[alias]
+    ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
+    in = !git fetch && git log master..FETCH_HEAD
+    lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset%s %C(blue)%an%Creset %Cgreen(%cr)' --abbrev-commit --date=relative
+    out = !git fetch && git log FETCH_HEAD..master
+    pr = pull -r
+    revert = checkout
+    rollback = reset --soft HEAD~1
+    st = status
+    stat = status
+    this = !git init && git add . && git commit -m \"initial commit\"
