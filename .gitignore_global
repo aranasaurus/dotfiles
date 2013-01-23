@@ -42,4 +42,10 @@ Thumbs.db
 
 # IDE Related #
 ###############
-.idea/workspace.xml
+.idea/
+
+# Generated #
+#############
+bin/
+out/
+gen/
