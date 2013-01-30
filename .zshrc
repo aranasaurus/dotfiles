@@ -49,3 +49,6 @@ if [ -f `brew --prefix`/etc/autojump ]; then
     export AUTOJUMP_KEEP_SYMLINKS=1
 fi
 
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
