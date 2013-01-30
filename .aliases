@@ -6,4 +6,11 @@ alias ipython="nocorrect ipython"
 alias gs="git status"
 alias mkphg="hg diff > ~/src/patch.diff" # Make patch from hg diff
 alias ap="patch -p1 < ~/src/patch.diff"  # Apply patch
+alias p2h="git push heroku master"
+
+# tunnel
+alias proxy="ssh -f -N proxy"
+alias imatwork="proxy; scselect Work"
+alias imathome="scselect Automatic; ps aux | grep proxy"
+alias iminpublic="proxy; scselect Public\ Wi-Fi"
 
