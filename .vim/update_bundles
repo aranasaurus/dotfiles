@@ -13,6 +13,7 @@ git_bundles = [
     "http://github.com/pangloss/vim-javascript.git",
     "https://github.com/kien/ctrlp.vim",
     "https://github.com/Lokaltog/vim-powerline.git",
+    "https://github.com/suan/vim-instant-markdown.git",
 ]
 
 vim_org_scripts = [

@@ -14,3 +14,8 @@ alias imatwork="proxy; scselect Work"
 alias imathome="scselect Automatic; ps aux | grep proxy"
 alias iminpublic="proxy; scselect Public\ Wi-Fi"
 
+# vim instant markdown
+alias instantMD="node /usr/local/share/npm/bin/instant-markdown-d"
+
+# zenircbot
+alias zenbot="redis-server /usr/local/etc/redis.conf & cd ~/src/zenircbot; node bot.js"

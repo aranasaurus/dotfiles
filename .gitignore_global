@@ -49,3 +49,7 @@ Thumbs.db
 bin/
 out/
 gen/
+
+# ESRI #
+########
+runtimecore/
