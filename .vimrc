@@ -64,6 +64,8 @@ set shortmess=atI               " Nueter the 'Press Enter to continue' messages.
 let mapleader=","
 nnoremap ' `
 nnoremap ` '
+nnoremap <space> :noh<CR>
+nnoremap <leader><space> :set hlsearch<CR>
 
 " Don't make me use shift
 nnoremap ; :
@@ -74,7 +76,7 @@ nnoremap k gk
 
 " Strip trailing whitespace (the mW/`W stuff is to preserve cursor position...
 " there's probably a better way to do this)
-nnoremap <leader><space> mW:%s/\s\+$//e<CR>`W
+nnoremap <leader><CR> mW:%s/\s\+$//e<CR>`W
 
 " NERDTree Stuff
 nmap <leader>n :NERDTreeClose<CR>:NERDTreeToggle<CR>
