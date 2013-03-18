@@ -43,3 +43,5 @@
 [branch]
     autosetuprebase = always
 
+[hub]
+	protocol = https

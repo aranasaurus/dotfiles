@@ -43,6 +43,7 @@ Thumbs.db
 # IDE Related #
 ###############
 .idea/
+xcuserdata/
 
 # Generated #
 #############
