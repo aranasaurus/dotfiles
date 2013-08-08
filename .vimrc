@@ -28,7 +28,7 @@ endif
 
 " Colors
 set t_Co=256
-set background=light
+set background=dark
 colorscheme solarized
 " toggles between dark and light solarized
 call togglebg#map("<F5>")
