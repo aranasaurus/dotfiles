@@ -17,12 +17,22 @@ syntax enable
 " Enable extended % matching
 runtime macros/matchit.vim
 
+" Powerline
+let g:Powerline_symbols='fancy'
+set laststatus=2
+if has('gui_running')
+  set guifont=Monaco:h12    " set fonts for gui vim
+  set transparency=5        " set transparent window
+  set guioptions=egmrt  " hide the gui menubar
+endif
+
 " Colors
 set t_Co=256
-set background=dark
+set background=light
 colorscheme solarized
 " toggles between dark and light solarized
 call togglebg#map("<F5>")
+highlight Pmenu ctermbg=238 gui=bold
 
 set hidden                      " hide buffers rather than close them
 set nowrap                      " don't wrap lines
@@ -35,15 +45,16 @@ set incsearch                   " show matches as you type
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set scrolloff=4                 " keep 4 lines off the edges of the screen when scrolling
 set mouse=a                     " enable mouse if it's available
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set autoindent                  " always autoindent
 set copyindent                  " copy previous indentation on autoindenting
 set shiftround                  " use multiple of shiftwidth when indenting with >
 set smarttab                    " use shiftwidth at the start of a line rather than tabstop
 set expandtab
 set list listchars=tab:»·,trail:·
+set cursorline                  " highlight current line
 
 set history=1000
 set undolevels=1000
@@ -105,10 +116,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['puppet', 'html'] }
-
-let g:Powerline_symbols='fancy'
-set laststatus=2
+" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['puppet', 'html'] }
 
 let g:user_zen_expandabbr_key = "<c-e>"
 let g:use_zen_complete_tag=1

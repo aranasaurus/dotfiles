@@ -19,3 +19,5 @@ alias instantMD="node /usr/local/share/npm/bin/instant-markdown-d"
 
 # zenircbot
 alias zenbot="redis-server /usr/local/etc/redis.conf & cd ~/src/zenircbot; node bot.js"
+
+alias please="sudo"
