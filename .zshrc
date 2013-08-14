@@ -33,6 +33,8 @@ plugins=(git osx python nyan brew compleat pip encode64 autojump)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.aliases
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+export AUTOJUMP_KEEP_SYMLINKS=1
 
 # Virtualenvwrapper stuff
 export WORKON_HOME=$HOME/.virtualenvs
@@ -46,11 +48,6 @@ export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
 export GOPATH="$HOME/go"
 export GOROOT="/usr/local/Cellar/go/1.1"
 export PATH="$PATH:$GOPATH/bin"
-
-if [ -f `brew --prefix`/etc/autojump ]; then
-    . `brew --prefix`/etc/autojump
-    export AUTOJUMP_KEEP_SYMLINKS=1
-fi
 
 # alias git to hub
 eval "$(hub alias -s)"
