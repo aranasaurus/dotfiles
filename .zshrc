@@ -36,7 +36,7 @@ COMPLETION_WAITING_DOTS="true"
 #plugins=(git osx python nyan brew compleat pip encode64 autojump mercurial)
 
 source $ZSH/oh-my-zsh.sh
-#source ~/.aliases
+source ~/.aliases
 
 # Virtualenvwrapper stuff
 export WORKON_HOME=$HOME/.virtualenvs
