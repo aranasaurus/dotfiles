@@ -48,3 +48,11 @@ au FileType go set noexpandtab|set nolist
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+set foldmethod=syntax
+set list listchars=tab:»·,trail:·
+
+" make arrow keys in normal mode resize the window
+nmap <left>  :3wincmd <<cr>
+nmap <right> :3wincmd ><cr>
+nmap <up>    :3wincmd +<cr>
+nmap <down>  :3wincmd -<cr>
