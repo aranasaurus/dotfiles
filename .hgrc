@@ -1,6 +1,5 @@
 [ui]
-username = Ryan Arana <ryana@darkhorse.com>
-#username = Ryan Arana <ryan.arana@gmail.com>
+username = Ryan Arana <ryan.arana@gmail.com>
 ignore = ~/.hgignore
 
 [diff]
@@ -10,12 +9,6 @@ git = 1
 hgext.color =
 hgext.graphlog =
 rebase =
-reviewboard = /usr/local/src/mercurial-reviewboard
 mq =
 hgk =
-
-[reviewboard]
-server = http://rb.darkhorse.com/
-target_groups = devs
-#launch_webbrowser = true
 
