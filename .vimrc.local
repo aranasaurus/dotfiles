@@ -48,8 +48,11 @@ au FileType go set noexpandtab|set nolist
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set foldmethod=syntax
 set list listchars=tab:»·,trail:·
+
+" code folding set up
+set foldmethod=syntax
+au Syntax javascript,go,python,c,cpp normal zR
 
 " make arrow keys in normal mode resize the window
 nmap <left>  :3wincmd <<cr>
