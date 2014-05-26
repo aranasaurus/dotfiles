@@ -21,3 +21,4 @@ alias instantMD="node /usr/local/share/npm/bin/instant-markdown-d"
 alias zenbot="redis-server /usr/local/etc/redis.conf & cd ~/src/zenircbot; node bot.js"
 
 alias please="sudo"
+alias love="/Applications/love.app/Contents/MacOS/love"

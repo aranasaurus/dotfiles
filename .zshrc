@@ -1,3 +1,7 @@
+# TODO: REMOVE THIS WHEN XCODE FIXES THIS
+# Xcode 5.1 broke some shit... until they fix it, we need this:
+export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -29,12 +33,10 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx python nyan brew compleat pip encode64 autojump)
+#plugins=(git osx python nyan brew compleat pip encode64 autojump mercurial)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.aliases
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
-export AUTOJUMP_KEEP_SYMLINKS=1
+#source ~/.aliases
 
 # Virtualenvwrapper stuff
 export WORKON_HOME=$HOME/.virtualenvs
@@ -42,12 +44,22 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
 source /usr/local/share/python/virtualenvwrapper.sh
 
 # Customize to your needs...
-export PATH=/usr/local/opt/ruby/bin:/usr/local/share/python:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/go/bin:/Users/ryana/.rvm/bin:/usr/games/bin:/usr/local/share/npm/bin
+export PATH=/usr/local/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/go/bin:/usr/games/bin:/usr/local/share/npm/bin
 export NODE_PATH=/usr/local/lib/node_modules
 export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
 export GOPATH="$HOME/go"
-export GOROOT="/usr/local/Cellar/go/1.1"
-export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$GOPATH/bin:/usr/local/src/go/bin"
+
+# GTrigz
+export DOCKER_HOST=tcp://:4243
+
+# chruby
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+chruby 2.0
+
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+export AUTOJUMP_KEEP_SYMLINKS=1
 
 # alias git to hub
 eval "$(hub alias -s)"
@@ -74,4 +86,3 @@ fi
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-rvm use 1.9.3

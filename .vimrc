@@ -55,6 +55,7 @@ set smarttab                    " use shiftwidth at the start of a line rather t
 set expandtab
 set list listchars=tab:»·,trail:·
 set cursorline                  " highlight current line
+set foldmethod=syntax
 
 set history=1000
 set undolevels=1000
@@ -116,7 +117,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
-" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['puppet', 'html'] }
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['puppet', 'html'] }
 
 let g:user_zen_expandabbr_key = "<c-e>"
 let g:use_zen_complete_tag=1
@@ -175,4 +176,21 @@ map <leader>wh :call WinMove('h')<cr>:buffers<cr>:buffer<Space>
 map <leader>wj :call WinMove('j')<cr>:buffers<cr>:buffer<Space>
 map <leader>wk :call WinMove('k')<cr>:buffers<cr>:buffer<Space>
 map <leader>wl :call WinMove('l')<cr>:buffers<cr>:buffer<Space>
+
+" Go stuff
+function! GoTo(key, action)
+  call WinMove(a:key)
+  exec a:action
+endfunction
+au FileType go set noexpandtab|set nolist
+au Filetype go nnoremap <leader>sh :call GoTo('h', "GoDef")<CR><CR>
+au Filetype go nnoremap <leader>sj :call GoTo('j', "GoDef")<CR><CR>
+au Filetype go nnoremap <leader>sk :call GoTo('k', "GoDef")<CR><CR>
+au Filetype go nnoremap <leader>sl :call GoTo('l', "GoDef")<CR><CR>
+au Filetype go nnoremap <leader>st :tab split <CR>:exe "GoDef"<CR><CR>
+au Filetype go nnoremap <leader>b :make<CR>
+au Filetype go nnoremap <leader>r :GoRun<CR>
+au Filetype go nnoremap <leader>d :GoDoc<CR>
+au Filetype go nnoremap <leader>D :GoDoc `expand(<cword>)`<CR>
+au FileType go nnoremap <leader>t :GoTest<CR>
 
