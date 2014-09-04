@@ -1,4 +1,6 @@
 Bundle 'https://github.com/Lokaltog/vim-powerline.git'
 Bundle 'https://github.com/fatih/vim-go.git'
 Bundle 'https://github.com/Valloric/YouCompleteMe.git'
-
+Bundle 'https://github.com/rizzatti/dash.vim.git'
+Bundle 'https://github.com/xolox/vim-lua-ftplugin.git'
+Bundle 'http://github.com/xolox/vim-misc.git'

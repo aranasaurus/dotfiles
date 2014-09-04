@@ -33,22 +33,26 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-#plugins=(git osx python nyan brew compleat pip encode64 autojump mercurial)
+plugins=(git osx python nyan brew compleat pip encode64 autojump mercurial)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.aliases
 
 # Virtualenvwrapper stuff
 export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
-source /usr/local/share/python/virtualenvwrapper.sh
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+source /usr/local/bin/virtualenvwrapper.sh
 
 # Customize to your needs...
-export PATH=/usr/local/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/go/bin:/usr/games/bin:/usr/local/share/npm/bin:$HOME/bin
+export PATH=/usr/local/opt/ruby/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/games/bin:/usr/local/share/npm/bin:/usr/local/bin:$HOME/bin
 export NODE_PATH=/usr/local/lib/node_modules
 export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
+
+# Golang
+export GOROOT="/usr/local/go"
 export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin:/usr/local/src/go/bin"
+export PATH="$PATH:$GOPATH/bin:/usr/local/go/bin"
+source ~/src/golang-crosscompile/crosscompile.bash
 
 # GTrigz
 export DOCKER_HOST=tcp://:4243
@@ -61,28 +65,17 @@ chruby 2.0
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 export AUTOJUMP_KEEP_SYMLINKS=1
 
-# alias git to hub
-eval "$(hub alias -s)"
-
-# hub tab complete script
-# # Autoload _git completion functions
-if declare -f _git > /dev/null; then
-  _git
-fi
-
-if declare -f _git_commands > /dev/null; then
-  _hub_commands=(
-    'alias:show shell instructions for wrapping git'
-    'pull-request:open a pull request on GitHub'
-    'fork:fork origin repo on GitHub'
-    'create:create new repo on GitHub for the current project'
-    'browse:browse the project on GitHub'
-    'compare:open GitHub compare view'
-  )
-  # Extend the '_git_commands' function with hub commands
-  eval "$(declare -f _git_commands | sed -e 's/base_commands=(/base_commands=(${_hub_commands} /')"
-fi
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
+export COCOS_CONSOLE_ROOT=/Users/ryana/code/games/cocos2d-x/tools/cocos2d-console/bin
+export PATH=$COCOS_CONSOLE_ROOT:$PATH
+
+# moai-sdk
+export MOAI_ROOT=~/code/games/moai-dev
+export MOAI_BIN=$MOAI_ROOT/release/osx/host-sdl/bin
+export MOAI_CONFIG=$MOAI_ROOT/samples/config
+export PATH=$MOAI_BIN:$PATH
+export PATH=~/code/games/moaicli:$PATH
 

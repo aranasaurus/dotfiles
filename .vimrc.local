@@ -8,11 +8,8 @@ nmap <space> :noh<CR>
 
 " gui settings
 if (&t_Co == 256 || has('gui_running'))
-  if ($TERM_PROGRAM == 'iTerm.app')
     colorscheme solarized
-  else
-    colorscheme desert
-  endif
+    set background=dark
 endif
 
 " Disambiguate ,a & ,t from the Align plugin, making them fast again.
@@ -43,15 +40,15 @@ if has('gui_running')
 endif
 
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
-
-au FileType go set noexpandtab|set nolist
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set list listchars=tab:»·,trail:·
+set cursorline
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set nolist
 
 " code folding set up
 set foldmethod=syntax
+set foldminlines=3
 au Syntax javascript,go,python,c,cpp normal zR
 
 " make arrow keys in normal mode resize the window
@@ -59,3 +56,17 @@ nmap <left>  :3wincmd <<cr>
 nmap <right> :3wincmd ><cr>
 nmap <up>    :3wincmd +<cr>
 nmap <down>  :3wincmd -<cr>
+nmap ; :
+
+" Go
+au FileType go set noexpandtab
+
+" Python
+au FileType python set list listchars=tab:»·,trail:·
+
+" AngelScript
+au BufRead,BufNewFile *.as set syntax=cpp
+au BufRead,BufNewFile *.angelscript set syntax=cpp
+
+let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['html']}
+let g:ycm_confirm_extra_conf = 0

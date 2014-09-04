@@ -23,3 +23,7 @@ alias zenbot="redis-server /usr/local/etc/redis.conf & cd ~/src/zenircbot; node 
 alias please="sudo"
 alias love="/Applications/love.app/Contents/MacOS/love"
 alias lla="ll -a"
+
+alias marked="open -a Marked.app"
+
+alias xct="~/src/xctool/xctool.sh"
