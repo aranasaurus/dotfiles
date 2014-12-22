@@ -20,10 +20,37 @@ alias instantMD="node /usr/local/share/npm/bin/instant-markdown-d"
 # zenircbot
 alias zenbot="redis-server /usr/local/etc/redis.conf & cd ~/src/zenircbot; node bot.js"
 
-alias please="sudo"
-alias love="/Applications/love.app/Contents/MacOS/love"
+alias please="sudo !!"
 alias lla="ll -a"
 
 alias marked="open -a Marked.app"
 
 alias xct="~/src/xctool/xctool.sh"
+
+alias showFiles="defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app"
+alias hideFiles="defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app"
+
+# Octopress
+alias op="octopress"
+alias opd="op deploy"
+alias ops="op serve --watch"
+
+# Pebble
+alias pc="pebble clean"
+alias pb="pebble build"
+alias pi="pebble install"
+alias pm="pc && pb && pi"
+alias pdb="pm && pebble logs"
+
+# Use all the cores!
+alias mk="make -j8"
+
+alias crawl="~/crawl/bin/crawl"
+
+# Vim console ;)
+alias :q="exit"
+alias :wq="exit"
+alias :e="vim"
+
+# Löve
+alias l="love ."

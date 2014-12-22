@@ -60,13 +60,10 @@ nmap ; :
 
 " Go
 au FileType go set noexpandtab
+let g:go_fmt_command = "goimports"
 
 " Python
 au FileType python set list listchars=tab:»·,trail:·
-
-" AngelScript
-au BufRead,BufNewFile *.as set syntax=cpp
-au BufRead,BufNewFile *.angelscript set syntax=cpp
 
 let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['html']}
 let g:ycm_confirm_extra_conf = 0

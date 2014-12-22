@@ -30,6 +30,10 @@ CASE_SENSITIVE="false"
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
+# Autojump
+[[ -s `brew --prefix`/etc/autojump.sh ]] && source `brew --prefix`/etc/autojump.sh
+autoload -U compinit && compinit -u
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -38,44 +42,41 @@ plugins=(git osx python nyan brew compleat pip encode64 autojump mercurial)
 source $ZSH/oh-my-zsh.sh
 source ~/.aliases
 
+# chruby
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+chruby 1.9.3
+
 # Virtualenvwrapper stuff
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 source /usr/local/bin/virtualenvwrapper.sh
 
 # Customize to your needs...
-export PATH=/usr/local/opt/ruby/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/games/bin:/usr/local/share/npm/bin:/usr/local/bin:$HOME/bin
+export PATH=/usr/local/bin:$HOME/bin:/usr/local/opt/ruby/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/games/bin:/usr/local/share/npm/bin:/usr/bin:/bin
 export NODE_PATH=/usr/local/lib/node_modules
 export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
+export PEBBLE_PATH=$HOME/code/pebble/sdk/PebbleSDK-2.8
+export PATH=$PEBBLE_PATH/bin:$PATH
 
 # Golang
 export GOROOT="/usr/local/go"
-export GOPATH="$HOME/go"
+export GOPATH="$HOME/src/go"
 export PATH="$PATH:$GOPATH/bin:/usr/local/go/bin"
 source ~/src/golang-crosscompile/crosscompile.bash
 
 # GTrigz
 export DOCKER_HOST=tcp://:4243
 
-# chruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
-chruby 2.0
-
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 export AUTOJUMP_KEEP_SYMLINKS=1
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# make using stuff in /usr/local with clang a little easier
+export CFLAGS="-I/usr/local/include"
+export LDFLAGS="-L/usr/local/lib"
 
-# Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
-export COCOS_CONSOLE_ROOT=/Users/ryana/code/games/cocos2d-x/tools/cocos2d-console/bin
-export PATH=$COCOS_CONSOLE_ROOT:$PATH
+# SDL2-go
+export CGO_CFLAGS="$CFLAGS -I /opt/X11/include"
+export CGO_LDFLAGS="$LDFLAGS -F /Library/Frameworks"
 
-# moai-sdk
-export MOAI_ROOT=~/code/games/moai-dev
-export MOAI_BIN=$MOAI_ROOT/release/osx/host-sdl/bin
-export MOAI_CONFIG=$MOAI_ROOT/samples/config
-export PATH=$MOAI_BIN:$PATH
-export PATH=~/code/games/moaicli:$PATH
 
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
