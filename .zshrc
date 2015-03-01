@@ -48,9 +48,9 @@ source /usr/local/opt/chruby/share/chruby/auto.sh
 chruby 1.9.3
 
 # Virtualenvwrapper stuff
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-source /usr/local/bin/virtualenvwrapper.sh
+#export WORKON_HOME=$HOME/.virtualenvs
+#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+#source /usr/local/bin/virtualenvwrapper.sh
 
 # Customize to your needs...
 export PATH=/usr/local/bin:$HOME/bin:/usr/local/opt/ruby/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/games/bin:/usr/local/share/npm/bin:/usr/bin:/bin
@@ -60,13 +60,13 @@ export PEBBLE_PATH=$HOME/code/pebble/sdk/PebbleSDK-2.8
 export PATH=$PEBBLE_PATH/bin:$PATH
 
 # Golang
-export GOROOT="/usr/local/go"
-export GOPATH="$HOME/src/go"
-export PATH="$PATH:$GOPATH/bin:/usr/local/go/bin"
-source ~/src/golang-crosscompile/crosscompile.bash
+#export GOROOT="/usr/local/go"
+#export GOPATH="$HOME/src/go"
+#export PATH="$PATH:$GOPATH/bin:/usr/local/go/bin"
+#source ~/src/golang-crosscompile/crosscompile.bash
 
 # GTrigz
-export DOCKER_HOST=tcp://:4243
+#export DOCKER_HOST=tcp://:4243
 
 export AUTOJUMP_KEEP_SYMLINKS=1
 
@@ -75,8 +75,8 @@ export CFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 
 # SDL2-go
-export CGO_CFLAGS="$CFLAGS -I /opt/X11/include"
-export CGO_LDFLAGS="$LDFLAGS -F /Library/Frameworks"
+#export CGO_CFLAGS="$CFLAGS -I /opt/X11/include"
+#export CGO_LDFLAGS="$LDFLAGS -F /Library/Frameworks"
 
 
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}

@@ -1,6 +1,6 @@
 [user]
 	name = Ryan Arana
-	email = ryan@ryanarana.com
+	email = ryan.arana@gmail.com
 
 [alias]
     ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
@@ -54,3 +54,11 @@
 	trustExitCode = true
 [filter "ignoreForecastIOKey"]
 	clean = "sed 's/forecastIOKey\\ \\=\\ .*/forecastIOKey\\ \\=\\ \"YOUR_API_KEY\";/'"
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true

@@ -45,7 +45,7 @@ alias pdb="pm && pebble logs"
 # Use all the cores!
 alias mk="make -j8"
 
-alias crawl="~/crawl/bin/crawl"
+alias crawl="~/src/ext/crawl/crawl-ref/source/crawl"
 
 # Vim console ;)
 alias :q="exit"

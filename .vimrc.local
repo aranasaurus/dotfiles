@@ -41,9 +41,6 @@ endif
 
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set cursorline
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
 set nolist
 
 " code folding set up
@@ -67,3 +64,6 @@ au FileType python set list listchars=tab:»·,trail:·
 
 let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['html']}
 let g:ycm_confirm_extra_conf = 0
+
+" Toggle spell check
+nmap <Leader>s :setlocal spell! spelllang=en_us<CR>
