@@ -1,6 +1,5 @@
-" This must be first, because it changes other options as a side effect
+" don't bother with vi compatibility
 set nocompatible
-set viminfo="~/.vim/.viminfo"
 
 " Adds all dirs in the ~/.vim/bundle
 call pathogen#infect()
@@ -9,188 +8,167 @@ call pathogen#helptags()
 " Auto source .vimrc when it changes
 au! BufWritePost .vimrc so %
 
-filetype on
-filetype plugin on
-filetype indent on
+" enable syntax highlighting
 syntax enable
 
-" Enable extended % matching
-runtime macros/matchit.vim
+" ensure ftdetect et al work by including this after the Vundle stuff
+filetype plugin indent on
 
+set autoindent
+set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
+set backspace=2                                              " Fix broken backspace in some setups
+set backupcopy=yes                                           " see :help crontab
+set clipboard=unnamed                                        " yank and paste with the system clipboard
+set directory-=.                                             " don't store swapfiles in the current directory
+set encoding=utf-8
+set expandtab                                                " expand tabs to spaces
+set ignorecase                                               " case-insensitive search
+set incsearch                                                " search as you type
+set laststatus=2                                             " always show statusline
+set list                                                     " show trailing whitespace
+set listchars=tab:▸\ ,trail:▫
+set number                                                   " show line numbers
+set ruler                                                    " show where you are
+set scrolloff=3                                              " show context above/below cursorline
+set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
+set showcmd
+set smartcase                                                " case-sensitive search if any caps
+set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
+set tabstop=8                                                " actual tabs occupy 8 characters
+set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
+set wildmenu                                                 " show a navigable menu for tab completion
+set wildmode=longest,list,full
+
+" Enable basic mouse behavior such as resizing buffers.
+set mouse=a
+if exists('$TMUX')  " Support resizing in tmux
+  set ttymouse=xterm2
+endif
+
+" keyboard shortcuts
+let mapleader = ','
+noremap <leader>l :Align
+nnoremap <leader>a :Ag<space>
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>d :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>t :CtrlP<CR>
+nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+nnoremap <leader>] :TagbarToggle<CR>
+nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
+nnoremap <leader>g :GitGutterToggle<CR>
+nnoremap <leader>c <Plug>Kwbd
+noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
+" in case you forgot to sudo
+cnoremap w!! %!sudo tee > /dev/null %
+
+" plugin settings
+let g:ctrlp_match_window = 'order:ttb,max:20'
+let g:NERDSpaceDelims = 1
+let g:gitgutter_enabled = 0
+
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+" fdoc is yaml
+autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
+" md is markdown
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md set spell
+" extra rails.vim help
+autocmd User Rails silent! Rnavcommand decorator      app/decorators            -glob=**/* -suffix=_decorator.rb
+autocmd User Rails silent! Rnavcommand observer       app/observers             -glob=**/* -suffix=_observer.rb
+autocmd User Rails silent! Rnavcommand feature        features                  -glob=**/* -suffix=.feature
+autocmd User Rails silent! Rnavcommand job            app/jobs                  -glob=**/* -suffix=_job.rb
+autocmd User Rails silent! Rnavcommand mediator       app/mediators             -glob=**/* -suffix=_mediator.rb
+autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" Fix Cursor in TMUX
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+" Don't copy the contents of an overwritten selection.
+vnoremap p "_dP
+
+" keyboard shortcuts
+inoremap jj <ESC>
+
+" highlight search
+set hlsearch
+nmap <leader>hl :let @/ = ""<CR>
+nmap <space> :noh<CR>
+
+" gui settings
+if (&t_Co == 256 || has('gui_running'))
+    colorscheme solarized
+    set background=dark
+endif
+
+" Disambiguate ,a & ,t from the Align plugin, making them fast again.
+"
+" This section is here to prevent AlignMaps from adding a bunch of mappings
+" that interfere with the very-common ,a and ,t mappings. This will get run
+" at every startup to remove the AlignMaps for the *next* vim startup.
+"
+" If you do want the AlignMaps mappings, remove this section, remove
+" ~/.vim/bundle/Align, and re-run rake in maximum-awesome.
+function! s:RemoveConflictingAlignMaps()
+  if exists("g:loaded_AlignMapsPlugin")
+    AlignMapsClean
+  endif
+endfunction
+command! -nargs=0 RemoveConflictingAlignMaps call s:RemoveConflictingAlignMaps()
+silent! autocmd VimEnter * RemoveConflictingAlignMaps
+
+" My stuff
+"
 " Powerline
 let g:Powerline_symbols='fancy'
 set laststatus=2
 if has('gui_running')
-  set guifont=Monaco:h12    " set fonts for gui vim
   set transparency=5        " set transparent window
   set guioptions=egmrt  " hide the gui menubar
 endif
 
-" Colors
-set t_Co=256
-set background=dark
-colorscheme solarized
-" toggles between dark and light solarized
-call togglebg#map("<F5>")
-highlight Pmenu ctermbg=238 gui=bold
-
-set hidden                      " hide buffers rather than close them
-set nowrap                      " don't wrap lines
-set number                      " always show line numbers
-set showmatch                   " show matching parens
-set ignorecase                  " ignore case when searching
-set smartcase                   " ignore case if search pattern is all lower case, otherwise use case sensitive
-set hlsearch                    " highlight search terms
-set incsearch                   " show matches as you type
 set backspace=indent,eol,start  " allow backspacing over everything in insert mode
-set scrolloff=4                 " keep 4 lines off the edges of the screen when scrolling
-set mouse=a                     " enable mouse if it's available
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set autoindent                  " always autoindent
-set copyindent                  " copy previous indentation on autoindenting
-set shiftround                  " use multiple of shiftwidth when indenting with >
-set smarttab                    " use shiftwidth at the start of a line rather than tabstop
-set expandtab
-set list listchars=tab:»·,trail:·
-set cursorline                  " highlight current line
+set cursorline
+set nolist
+
+" code folding set up
 set foldmethod=syntax
+set foldminlines=3
+au Syntax javascript,go,python,c,cpp normal zR
 
-set history=1000
-set undolevels=1000
-set wildignore=*.swp,*.bak,*.pyc,*.class
-set title                       " set teminal title
-set novisualbell                " don't beep
-set noerrorbells                " seriously, shut up
-set ruler                       " show the cursor position all the time
-set showcmd                     " display incomplete commands
-set nobackup                    " I can :w thanks
-set noswapfile                  " don't litter
-set clipboard=unnamed           " Enable pasting from the system clipboard
-set guioptions-=T
-set wildmenu                    " Better :command completion
-set shortmess=atI               " Nueter the 'Press Enter to continue' messages. see :help shortmess
-
-" Key mapping stuff
-let mapleader=","
-nnoremap ' `
-nnoremap ` '
-nnoremap <space> :noh<CR>
-nnoremap <leader><space> :set hlsearch<CR>
-
-" Don't make me use shift
-nnoremap ; :
-
-" Fix line wrapping messing up j/k keys
-nnoremap j gj
-nnoremap k gk
-
-" Strip trailing whitespace (the mW/`W stuff is to preserve cursor position...
-" there's probably a better way to do this)
-nnoremap <leader><CR> mW:%s/\s\+$//e<CR>`W
-
-" NERDTree Stuff
-nmap <leader>n :NERDTreeClose<CR>:NERDTreeToggle<CR>
-nmap <leader>nf :NERDTreeClose<CR>:NERDTreeFind<CR>
-nmap <leader>N :NERDTreeClose<CR>
-let NERDTreeBookmarksFile=expand("$VIM/vimfiles/NERDTreeBookmarks")
-let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.hg' ]
-let NERDTreeShowBookmarks=1
-let NERDTreeShowFiles=1
-let NERDTreeShowHidden=1
-let NERDTreeQuitOnOpen=1
-let NERDTreeHighlightCursorline=1
-let NERDTreeMouseMode=2
-
-" Omni
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['puppet', 'html'] }
-
-let g:user_zen_expandabbr_key = "<c-e>"
-let g:use_zen_complete_tag=1
-
-" Window Management
-function! MarkWindowSwap()
-	let g:markedWinNum = winnr()
-endfunction
-
-function! DoWindowSwap()
-	"Mark destination
-	let curNum = winnr()
-	let curBuf = bufnr( "%" )
-	exe g:markedWinNum . "wincmd w"
-	"Switch to source and shuffle dest->source
-	let markedBuf = bufnr( "%" )
-	"Hide and open so that we aren't prompted and keep history
-	exe 'hide buf' curBuf
-	"Switch to dest and shuffle source->dest
-	exe curNum . "wincmd w"
-	"Hide and open so that we aren't prompted and keep history
-	exe 'hide buf' markedBuf
-endfunction
-
-nmap <silent> <leader>wm :call MarkWindowSwap()<CR>
-nmap <silent> <leader>wx :call DoWindowSwap()<CR>
-
-function! WinMove(key)
-	let t:curwin = winnr()
-	exec "wincmd ".a:key
-	if (t:curwin == winnr()) "we havent moved
-		if (match(a:key,'[jk]')) "were we going up/down
-			wincmd v
-		else
-			wincmd s
-		endif
-		exec "wincmd ".a:key
-	endif
-endfunction
-
-map <leader>h :call WinMove('h')<cr>
-map <leader>k :call WinMove('k')<cr>
-map <leader>l :call WinMove('l')<cr>
-map <leader>j :call WinMove('j')<cr>
-map <leader>wo :wincmd o<cr>
-map <leader>wr :wincmd r<cr>
-map <leader>H :wincmd H<cr>
-map <leader>K :wincmd K<cr>
-map <leader>L :wincmd L<cr>
-map <leader>J :wincmd J<cr>
+" make arrow keys in normal mode resize the window
 nmap <left>  :3wincmd <<cr>
 nmap <right> :3wincmd ><cr>
 nmap <up>    :3wincmd +<cr>
 nmap <down>  :3wincmd -<cr>
-map <leader>wh :call WinMove('h')<cr>:buffers<cr>:buffer<Space>
-map <leader>wj :call WinMove('j')<cr>:buffers<cr>:buffer<Space>
-map <leader>wk :call WinMove('k')<cr>:buffers<cr>:buffer<Space>
-map <leader>wl :call WinMove('l')<cr>:buffers<cr>:buffer<Space>
+nmap ; :
 
-" Go stuff
-function! GoTo(key, action)
-  call WinMove(a:key)
-  exec a:action
-endfunction
-au FileType go set noexpandtab|set nolist
-au Filetype go nnoremap <leader>sh :call GoTo('h', "GoDef")<CR><CR>
-au Filetype go nnoremap <leader>sj :call GoTo('j', "GoDef")<CR><CR>
-au Filetype go nnoremap <leader>sk :call GoTo('k', "GoDef")<CR><CR>
-au Filetype go nnoremap <leader>sl :call GoTo('l', "GoDef")<CR><CR>
-au Filetype go nnoremap <leader>st :tab split <CR>:exe "GoDef"<CR><CR>
-au Filetype go nnoremap <leader>b :make<CR>
-au Filetype go nnoremap <leader>r :GoRun<CR>
-au Filetype go nnoremap <leader>d :GoDoc<CR>
-au Filetype go nnoremap <leader>D :GoDoc `expand(<cword>)`<CR>
-au FileType go nnoremap <leader>t :GoTest<CR>
+" Go
+au FileType go set noexpandtab
+let g:go_fmt_command = "goimports"
 
+" Python
+au FileType python set list listchars=tab:»·,trail:·
+
+let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['html']}
+let g:ycm_confirm_extra_conf = 0
+
+" Toggle spell check
+nmap <Leader>s :setlocal spell! spelllang=en_us<CR>
