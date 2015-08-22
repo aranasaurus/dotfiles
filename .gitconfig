@@ -1,6 +1,6 @@
 [user]
 	name = Ryan Arana
-	email = ryan.arana@gmail.com
+	email = ryan@ryanarana.com
 
 [alias]
     ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore

@@ -12,6 +12,10 @@ if (&t_Co == 256 || has('gui_running'))
     set background=dark
 endif
 
+if (has('gui_running'))
+  set lines=999 columns=999
+endif
+
 " Disambiguate ,a & ,t from the Align plugin, making them fast again.
 "
 " This section is here to prevent AlignMaps from adding a bunch of mappings
@@ -67,3 +71,7 @@ let g:ycm_confirm_extra_conf = 0
 
 " Toggle spell check
 nmap <Leader>s :setlocal spell! spelllang=en_us<CR>
+
+" Vim Instant Markdown
+let g:instant_markdown_autostart = 0
+nmap <Leader>p :InstantMarkdownPreview<CR>
