@@ -59,13 +59,10 @@ export LDFLAGS="-L/usr/local/lib"
 
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
-echo "sourcing the boxen environment variables"
-[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
- 
-echo "enabling virtualenvwrapper"
-pyenv virtualenvwrapper
-
 # Autojump
-[[ -s `brew --prefix`/etc/autojump.sh ]] && source `brew --prefix`/etc/autojump.sh
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
+
+# Android
+export PATH=$PATH:~/Library/Android/sdk/platform-tools
 

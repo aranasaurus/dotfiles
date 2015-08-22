@@ -54,3 +54,14 @@ alias :e="vim"
 
 # Löve
 alias l="love ."
+
+# Fuck you .DS_Store files
+alias rmds="find . -name "".DS_Store"" -delete"
+
+# DHD API Docs
+alias apidoc="pkill -9 -f jekyll; cd ~/src/dhd/apidoc; jekyll serve --watch --detach; open http://localhost:4000; popd"
+
+# Camille
+alias mille="HUBOT_SLACK_TOKEN=xoxb-8378020230-JuTa19ChVsySrZTGXLvvJpGC HUBOT_LOG_LEVEL=debug ~/src/github/aranasaurus/camille/bin/hubot -a slack" # also try SLACK_LOG_LEVEL=debug for getting the Slack client to spit out more info
+alias dokku="ssh dokku@ryn.io"
+
