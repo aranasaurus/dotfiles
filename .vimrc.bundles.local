@@ -1,0 +1,5 @@
+Bundle 'https://github.com/Lokaltog/vim-powerline.git'
+Bundle 'https://github.com/fatih/vim-go.git'
+Bundle 'https://github.com/rizzatti/dash.vim.git'
+Bundle 'https://github.com/tikhomirov/vim-glsl.git'
+Bundle 'https://github.com/Shougo/neocomplete.vim.git'

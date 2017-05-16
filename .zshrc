@@ -30,59 +30,53 @@ CASE_SENSITIVE="false"
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
+# Autojump
+[[ -s `brew --prefix`/etc/autojump.sh ]] && source `brew --prefix`/etc/autojump.sh
+autoload -U compinit && compinit -u
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-#plugins=(git osx python nyan brew compleat pip encode64 autojump mercurial)
+plugins=(git osx python nyan brew compleat pip encode64 autojump mercurial)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.aliases
 
-# Virtualenvwrapper stuff
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
-source /usr/local/share/python/virtualenvwrapper.sh
-
-# Customize to your needs...
-export PATH=/usr/local/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/go/bin:/usr/games/bin:/usr/local/share/npm/bin
-export NODE_PATH=/usr/local/lib/node_modules
-export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
-export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin:/usr/local/src/go/bin"
-
-# GTrigz
-export DOCKER_HOST=tcp://:4243
-
 # chruby
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
-chruby 2.0
+chruby 1.9.3
 
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+# Virtualenvwrapper stuff
+#export WORKON_HOME=$HOME/.virtualenvs
+#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+#source /usr/local/bin/virtualenvwrapper.sh
+
+# Customize to your needs...
+export PATH=/usr/local/bin:$HOME/bin:/usr/local/opt/ruby/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/games/bin:/usr/local/share/npm/bin:/usr/bin:/bin
+export NODE_PATH=/usr/local/lib/node_modules
+export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
+export PEBBLE_PATH=$HOME/code/pebble/sdk/PebbleSDK-2.8
+export PATH=$PEBBLE_PATH/bin:$PATH
+
+# Golang
+#export GOROOT="/usr/local/go"
+#export GOPATH="$HOME/src/go"
+#export PATH="$PATH:$GOPATH/bin:/usr/local/go/bin"
+#source ~/src/golang-crosscompile/crosscompile.bash
+
+# GTrigz
+#export DOCKER_HOST=tcp://:4243
+
 export AUTOJUMP_KEEP_SYMLINKS=1
 
-# alias git to hub
-eval "$(hub alias -s)"
+# make using stuff in /usr/local with clang a little easier
+export CFLAGS="-I/usr/local/include"
+export LDFLAGS="-L/usr/local/lib"
 
-# hub tab complete script
-# # Autoload _git completion functions
-if declare -f _git > /dev/null; then
-  _git
-fi
+# SDL2-go
+#export CGO_CFLAGS="$CFLAGS -I /opt/X11/include"
+#export CGO_LDFLAGS="$LDFLAGS -F /Library/Frameworks"
 
-if declare -f _git_commands > /dev/null; then
-  _hub_commands=(
-    'alias:show shell instructions for wrapping git'
-    'pull-request:open a pull request on GitHub'
-    'fork:fork origin repo on GitHub'
-    'create:create new repo on GitHub for the current project'
-    'browse:browse the project on GitHub'
-    'compare:open GitHub compare view'
-  )
-  # Extend the '_git_commands' function with hub commands
-  eval "$(declare -f _git_commands | sed -e 's/base_commands=(/base_commands=(${_hub_commands} /')"
-fi
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
