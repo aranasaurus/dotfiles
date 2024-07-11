@@ -11,3 +11,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+vim.api.nvim_create_autocmd("Filetype", {
+	pattern = "rust",
+	callback = function()
+		vim.keymap.set(
+			"n",
+			"<leader>R",
+			":FloatermNew --autoclose=1 cargo run<cr>",
+			{ buffer = true, desc = "[R]un `cargo run`" }
+		)
+	end,
+})
